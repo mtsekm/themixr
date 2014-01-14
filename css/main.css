@@ -1,0 +1,45 @@
+body {
+	background: #EFEFEF;
+	color: #333;
+	font-size: 11px;
+	height: auto;
+	padding-bottom: 20px;
+}
+
+a:link, a:visited {
+	color: #2F617F;
+}
+a:hover, a:focus {
+	color: #3E81A8;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h3 {
+	font-family: Monda, Georgia, serif;
+}
+
+.mainContainer {
+	background: #fff;
+	border-bottom: 1px solid #c8c8c8;
+	border-left: 1px solid #e4e4e4;
+	border-right: 1px solid #c8c8c8;
+	-moz-box-shadow: 2px 1px 10px rgba(0,0,0, .07);
+	-webkit-box-shadow: 2px 1px 10px rgba(0,0,0, .07);
+	box-shadow: 2px 1px 10px rgba(0,0,0, .07);
+	padding: 15px;
+}
+
+#ilixi-ui-canvas {
+	width: 500px;
+	height: 500px;
+}
+
+.gradients {
+	width: 150px;
+	height: 20px;
+	margin-bottom: 32px;
+	position: relative;
+}

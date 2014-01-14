@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ilixi - Themixr</title>
+
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="plugins/bootstrap/bootstrap-theme.min.css">
+
+        <script src="plugins/bootstrap/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="plugins/colorpicker/colorpicker.css"/>
+        <script src="plugins/colorpicker/colorpicker.min.js"></script>
+
+        <link rel="stylesheet" href="plugins/gradientpicker/jquery.gradientPicker.css"/>
+        <script src="plugins/gradientpicker/jquery.gradientPicker.js"></script>
+
+        <script src="plugins/filesaver/canvas-toBlob.js"></script>
+        <script src="plugins/filesaver/FileSaver.js"></script>
+
+        <script src="js/Style.js"></script>
+        <script src="js/FontPack.js"></script>
+        <script src="js/Painter.js"></script>
+        <script src="js/ui.js"></script>
+        <script src="js/Util.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/main.css" />
+
+        <script src="plugins/jszip/jszip.js"></script>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation" style="line-height:90px; height:90px; padding-right: 20px;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.ilixi.org/"><img src="http://ilixi.org/theme/ilx_2/images/ilixi_logo.png" /></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button class="btn btn-default navbar-btn " onclick="theme.saveAsPNG();">
+                            <span class="glyphicon glyphicon-save"></span> Save theme image
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn btn-default navbar-btn " onclick="saveThemeAsZIP();">
+                            <span class="glyphicon glyphicon-save"></span> Save theme as zip
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div id="accordion">
+                        <h3>Fonts</h3>
+                        <div>
+
+                            <div class="form-group">
+                                <label for="fontsLang">Language:</label>
+                                <input id="fontsLang" type="text" value="en_US" class="form-control"/>
+                            </div>
+
+                            <div id="FontTab">
+                                <ul>
+                                    <li>
+                                        <a href="#tabs-1">Default</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tabs-2">Title</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tabs-3">Button</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tabs-4">Input</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tabs-5">Info</a>
+                                    </li>
+                                </ul>
+                                <div id="tabs-1">
+                                    <div class="form-group">
+                                        <label for="defaultFont">Font Name:</label>
+                                        <input id="defaultFont" type="text" value="Sans" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="defaultFontSize">Font Size:</label>
+                                        <input id="defaultFontSize" type="number" class="form-control" min="8" value="12"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="defaultFontStyle">Font Style:</label>
+                                        <select id="defaultFontStyle" class="form-control">
+                                            <option>Plain</option>
+                                            <option>Italic</option>
+                                            <option>Bold</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="tabs-2">
+                                    <div class="form-group">
+                                        <label for="titleFont">Font Name:</label>
+                                        <input id="titleFont" type="text" value="Sans" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="titleFontSize">Font Size:</label>
+                                        <input id="titleFontSize" type="number" class="form-control" min="8" value="24"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="titleFontStyle">Font Style:</label>
+                                        <select id="titleFontStyle" class="form-control">
+                                            <option>Plain</option>
+                                            <option>Italic</option>
+                                            <option selected>Bold</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="tabs-3">
+                                    <div class="form-group">
+                                        <label for="buttonFont">Font Name:</label>
+                                        <input id="buttonFont" type="text" value="Sans" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="buttonFontSize">Font Size:</label>
+                                        <input id="buttonFontSize" type="number" class="form-control" min="8" value="16"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="buttonFontStyle">Font Style:</label>
+                                        <select id="buttonFontStyle" class="form-control">
+                                            <option>Plain</option>
+                                            <option>Italic</option>
+                                            <option selected>Bold</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="tabs-4">
+                                    <div class="form-group">
+                                        <label for="inputFont">Font Name:</label>
+                                        <input id="inputFont" type="text" value="Sans" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputFontSize">Font Size:</label>
+                                        <input id="inputFontSize" type="number" class="form-control" min="8" value="14"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputFontStyle">Font Style:</label>
+                                        <select id="inputFontStyle" class="form-control">
+                                            <option>Plain</option>
+                                            <option>Italic</option>
+                                            <option>Bold</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="tabs-5">
+                                    <div class="form-group">
+                                        <label for="infoFont">Font Name:</label>
+                                        <input id="infoFont" type="text" value="Sans" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="infoFontSize">Font Size:</label>
+                                        <input id="infoFontSize" type="number" class="form-control" min="8" value="12"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="infoFontStyle">Font Style:</label>
+                                        <select id="infoFontStyle" class="form-control">
+                                            <option selected>Plain</option>
+                                            <option>Italic</option>
+                                            <option>Bold</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button class="btn btn-default" onclick="saveFontPackAsXML();">
+                                <span class="glyphicon glyphicon-export"></span> Export FontPack to XML
+                            </button>
+
+                        </div>
+
+                        <h3>PushButton</h3>
+                        <div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label for="pushButtonRadius">Radius:</label>
+                                    <input id="pushButtonRadius" type="number" class="form-control" min="0" max="25" value="4" onchange='theme.PBRadius = Number($("#pushButtonRadius").val()); theme.draw();'>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <label for="PBBorderWidth">Border Width:</label>
+                                    <input id="PBBorderWidth" type="number" class="form-control" min="0" max="10" value="4" onchange='theme.PBBorderWidth = Number($("#PBBorderWidth").val()); theme.draw();'>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-xs-4">
+                                    <label>Background:</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                        Solid <div id="PBSolidColor"></div> </label>
+                                </div>
+                                <div class="col-xs-8">
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                        <div class="gradients" id="pushButtonBG"></div> </label>
+                                </div>
+                            </div>
+
+                            <div class="gradients" id="pushButtonBorder">
+                                Border
+                            </div>
+
+                        </div>
+
+                        <h3>ToolButton</h3>
+                        <div>
+                            ToolButtonToolButton
+                        </div>
+
+                        <h3>RadioButton</h3>
+                        <div>
+                            RadioButtonRadioButton
+                        </div>
+
+                        <h3>CheckBox</h3>
+                        <div>
+                            CheckBoxCheckBox
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="mainContainer">
+                        <canvas id="ilixi-ui-canvas" ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
