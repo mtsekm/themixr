@@ -47,8 +47,12 @@
 		var $preview = $("<canvas class='gradientPicker-preview'></canvas>");
 		this.$el.append($preview);
 		var canvas = $preview[0];
-		canvas.width = canvas.clientWidth;
-		canvas.height = canvas.clientHeight;
+		//canvas.width = canvas.clientWidth;
+		//canvas.height = canvas.clientHeight;
+		//onder canvas size fix
+		canvas.width = this.$el.width();
+		canvas.height = this.$el.height();
+		//onder canvas size fix
 		this.g2d = canvas.getContext("2d");
 
 		var $ctrlPtContainer = $("<div class='gradientPicker-ctrlPts'></div>");
