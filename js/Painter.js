@@ -42,7 +42,7 @@ function Brush() {
 		grad = gradient;
 		useGradient = true;
 	}
-	
+
 	this.setGradient = function(element, context, box, direction) {
 		if (element) {
 			useGradient = true;
@@ -51,7 +51,7 @@ function Brush() {
 				grad.addStopFromString(element[i].position, element[i].color);
 			}
 		}
-	}	
+	}
 
 	this.applyBrush = function(context) {
 		if (useGradient)
@@ -91,6 +91,10 @@ function Pen() {
 		width = w;
 	}
 
+	this.getLineWidth = function() {
+		return width;
+	}
+
 	this.applyPen = function(context) {
 		context.lineWidth = width;
 		if (useGradient)
@@ -99,6 +103,15 @@ function Pen() {
 			context.strokeStyle = "rgba(" + clr.r + "," + clr.g + "," + clr.b + "," + clr.a + ")";
 	}
 }
+
+var DrawingMode = {
+	Fill : 1,
+	Stroke : 2,
+	FillAndStroke : 3,
+	Clip : 4,
+	AddPath : 8,
+	Shadow : 16
+};
 
 function Painter(context) {
 	var ctx = context;
@@ -113,7 +126,7 @@ function Painter(context) {
 		pen = Pen;
 	}
 
-	this.roundRect = function roundRect(x, y, width, height, radius, stroke) {
+	this.roundRect = function roundRect(x, y, width, height, radius, mode) {
 		ctx.beginPath();
 		ctx.moveTo(x + radius, y);
 		ctx.lineTo(x + width - radius, y);
@@ -126,10 +139,15 @@ function Painter(context) {
 		ctx.quadraticCurveTo(x, y, x + radius, y);
 		ctx.closePath();
 
-		if (stroke) {
+		if (mode & DrawingMode.Clip)
+			ctx.clip();
+
+		if (mode & DrawingMode.Stroke && pen.getLineWidth() > 0) {
 			pen.applyPen(ctx);
 			ctx.stroke();
-		} else {
+		}
+
+		if (mode & DrawingMode.Fill) {
 			brush.applyBrush(ctx);
 			ctx.fill();
 		}

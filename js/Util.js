@@ -1,3 +1,7 @@
+function importScript(scriptName) {
+	$(body).append("<script src=" + scriptName + ".js></script>");
+}
+
 function saveFontPackAsXML() {
 	var pack = new FontPack();
 	pack.saveAsXML();
@@ -6,7 +10,7 @@ function saveFontPackAsXML() {
 function saveThemeAsZIP() {
 	var zip = new JSZip();
 	zip.folder("themixr");
-	
+
 	var fontPack = new FontPack();
 	zip.file("themixr/fonts_" + fontPack.lang + ".xml", fontPack.toXML());
 
@@ -22,4 +26,3 @@ function saveThemeAsZIP() {
 	});
 	saveAs(content, "themixr.zip");
 }
-

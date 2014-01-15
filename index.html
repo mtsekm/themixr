@@ -24,8 +24,13 @@
         <script src="js/Style.js"></script>
         <script src="js/FontPack.js"></script>
         <script src="js/Painter.js"></script>
-        <script src="js/ui.js"></script>
+
         <script src="js/Util.js"></script>
+        <script src="js/Widget.js"></script>
+        <script src="js/PushButton.js"></script>
+        <script src="js/Container.js"></script>
+
+        <script src="js/ui.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/main.css" />
 
@@ -195,34 +200,78 @@
                         <h3>PushButton</h3>
                         <div>
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-4">
                                     <label for="pushButtonRadius">Radius:</label>
-                                    <input id="pushButtonRadius" type="number" class="form-control" min="0" max="25" value="4" onchange='theme.PBRadius = Number($("#pushButtonRadius").val()); theme.draw();'>
+                                    <input id="pushButtonRadius" type="number" class="form-control" min="0" max="25" value="4" onchange='theme.PBRadius = Number($("#pushButtonRadius").val()); themeContainer.paint();'>
                                 </div>
-
-                                <div class="col-xs-6">
-                                    <label for="PBBorderWidth">Border Width:</label>
-                                    <input id="PBBorderWidth" type="number" class="form-control" min="0" max="10" value="4" onchange='theme.PBBorderWidth = Number($("#PBBorderWidth").val()); theme.draw();'>
-                                </div>
-                            </div>
-
-                            <div class="row">
 
                                 <div class="col-xs-4">
-                                    <label>Background:</label>
-                                    <label class="checkbox-inline">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                        Solid <div id="PBSolidColor"></div> </label>
+                                    <label for="PBBorderWidth">Border Width:</label>
+                                    <input id="PBBorderWidth" type="number" class="form-control" min="0" max="5" value="2" onchange='theme.PBBorderWidth = Number($("#PBBorderWidth").val()); themeContainer.paint();'>
                                 </div>
-                                <div class="col-xs-8">
-                                    <label class="checkbox-inline">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                        <div class="gradients" id="pushButtonBG"></div> </label>
+
+                                <div class="col-xs-4">
+                                    <label for="PBShadow">Shadow:</label>
+                                    <input id="PBShadow" type="number" class="form-control" min="0" max="5" value="0" onchange='theme.PBShadow = Number($("#PBShadow").val()); themeContainer.paint();'>
                                 </div>
                             </div>
+                            <br>
+                            <div class="row">
 
-                            <div class="gradients" id="pushButtonBorder">
-                                Border
+                                <div id="PBTab">
+                                    <ul>
+                                        <li>
+                                            <a href="#pbtabs-1">Default</a>
+                                        </li>
+                                        <li>
+                                            <a href="#pbtabs-2">Pressed</a>
+                                        </li>
+                                        <li>
+                                            <a href="#pbtabs-3">Exposed</a>
+                                        </li>
+                                        <li>
+                                            <a href="#pbtabs-4">Disabled</a>
+                                        </li>
+                                        <li>
+                                            <a href="#pbtabs-5">Focused</a>
+                                        </li>
+                                    </ul>
+                                    <div id="pbtabs-1">
+                                        <label>Background </label>
+                                        <div class="gradients" id="PBDefBGGrad"></div>
+
+                                        <label>Border color</label>
+                                        <div class="gradients" id="PBDefBorderGrad"></div>
+                                    </div>
+                                    <div id="pbtabs-2">
+                                        <label>Background </label>
+                                        <div class="gradients" id="PBPreBGGrad"></div>
+
+                                        <label>Border color</label>
+                                        <div class="gradients" id="PBPreBorderGrad"></div>
+                                    </div>
+                                    <div id="pbtabs-3">
+                                        <label>Background </label>
+                                        <div class="gradients" id="PBExpBGGrad"></div>
+
+                                        <label>Border color</label>
+                                        <div class="gradients" id="PBExpBorderGrad"></div>
+                                    </div>
+                                    <div id="pbtabs-4">
+                                        <label>Background </label>
+                                        <div class="gradients" id="PBDisBGGrad"></div>
+
+                                        <label>Border color</label>
+                                        <div class="gradients" id="PBDisBorderGrad"></div>
+                                    </div>
+                                    <div id="pbtabs-5">
+                                        <label>Background </label>
+                                        <div class="gradients" id="PBFocBGGrad"></div>
+
+                                        <label>Border color</label>
+                                        <div class="gradients" id="PBFocBorderGrad"></div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
